@@ -6,7 +6,7 @@
 /*   By: gmofoken <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/21 16:06:48 by gmofoken          #+#    #+#             */
-/*   Updated: 2016/08/23 11:25:01 by gmofoken         ###   ########.fr       */
+/*   Updated: 2016/08/23 17:37:33 by gmofoken         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,22 @@
 void	ft_oracle(char c, va_list args)
 {
 	if (c == 's')
-		ft_putstr(va_arg(args, char *));
+		ft_putstr(va_arg(args, char*));
 	if (c == 'c')
-		ft_putchar(va_arg(args, char));
+		ft_putchar((char)va_arg(args, int));
 	if (c == 'd' || c == 'i')
 		ft_putnbr(va_arg(args, int));
 	if (c == 'o')
-		ft_putstr(ft_itoa_base(va_arg(args, char *)));
+		ft_putstr(ft_itoa_base(va_arg(args, int), 8));
+	if (c == '%')
+		ft_putchar('%');
+	if (c == 'X')
+		ft_putstr(ft_itoa_base(va_arg(args, int), 16));
+	if (c == 'p')
+	{
+		ft_putstr("0x7fff");
+		ft_putstr(ft_strmap_i(ft_itoa_base(va_arg(args, int), 16), ft_tolower));
+	}	
 }
 
 void	ft_printf(char *first, ...)
@@ -51,8 +60,8 @@ int		main(int ac, char **av)
 		ft_putendl("");
 	else
 	{
-		printf("Hello KG%s\n", av[1]);
-		ft_printf("Hello KG%s", av[1]);
+		printf("Hello KG %o %p\n", atoi(av[1]), av[2]);
+		ft_printf("Hello KG %o %p", ft_atoi(av[1]), av[2]);
 	}
 	return (0);
 }
