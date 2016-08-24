@@ -24,6 +24,10 @@ void	ft_oracle(char c, va_list args)
 		ft_putstr(ft_itoa_base(va_arg(args, int), 8));
 	if (c == '%')
 		ft_putchar('%');
+	if (c == 'u')
+		ft_putstr(ft_itoa_base(va_arg(args, int), 10));
+	if (c == 'x')
+		ft_putstr(ft_strmap_i(ft_itoa_base(va_arg(args, int), 16), ft_tolower));
 	if (c == 'X')
 		ft_putstr(ft_itoa_base(va_arg(args, int), 16));
 	if (c == 'p')
@@ -60,8 +64,8 @@ int		main(int ac, char **av)
 		ft_putendl("");
 	else
 	{
-		printf("Hello KG %o %p\n", atoi(av[1]), av[2]);
-		ft_printf("Hello KG %o %p", ft_atoi(av[1]), av[2]);
+		printf("Hello KG %% %o %p\n", atoi(av[1]), av[2]);
+		ft_printf("Hello KG %% %o %p\n", ft_atoi(av[1]), av[2]);
 	}
 	return (0);
 }
