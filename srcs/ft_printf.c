@@ -6,7 +6,7 @@
 /*   By: gmofoken <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/21 16:06:48 by gmofoken          #+#    #+#             */
-/*   Updated: 2016/08/23 17:37:33 by gmofoken         ###   ########.fr       */
+/*   Updated: 2016/08/24 14:41:19 by gmofoken         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,21 @@ void	ft_oracle(char c, va_list args)
 {
 	if (c == 's')
 		ft_putstr(va_arg(args, char*));
-	if (c == 'c')
+	else if (c == 'c')
 		ft_putchar((char)va_arg(args, int));
-	if (c == 'd' || c == 'i')
+	else if (c == 'd' || c == 'i')
 		ft_putnbr(va_arg(args, int));
-	if (c == 'o')
+	else if (c == 'o')
 		ft_putstr(ft_itoa_base(va_arg(args, int), 8));
-	if (c == '%')
+	else if (c == '%')
 		ft_putchar('%');
-	if (c == 'u')
+	else if (c == 'u')
 		ft_putstr(ft_itoa_base(va_arg(args, int), 10));
-	if (c == 'x')
+	else if (c == 'x')
 		ft_putstr(ft_strmap_i(ft_itoa_base(va_arg(args, int), 16), ft_tolower));
-	if (c == 'X')
+	else if (c == 'X')
 		ft_putstr(ft_itoa_base(va_arg(args, int), 16));
-	if (c == 'p')
+	else if (c == 'p')
 	{
 		ft_putstr("0x7fff");
 		ft_putstr(ft_strmap_i(ft_itoa_base(va_arg(args, int), 16), ft_tolower));
@@ -46,14 +46,10 @@ void	ft_printf(char *first, ...)
 	va_start(args, first);
 	while (first[i] != '\0')
 	{
-		while (first[i] != '\0' && first[i] != '%')
-		{
-			ft_putchar(first[i]);
-			i++;
-		}
 		if (first[i++] == '%')
-			ft_oracle(first[i], args);
-		i++;
+			ft_oracle(first[i++], args);
+		if (first[i] != '\0' && first[i] != '%')
+			ft_putchar(first[i++]);
 	}
 	va_end(args);
 }
@@ -64,8 +60,9 @@ int		main(int ac, char **av)
 		ft_putendl("");
 	else
 	{
-		printf("Hello KG %% %o %p\n", atoi(av[1]), av[2]);
-		ft_printf("Hello KG %% %o %p\n", ft_atoi(av[1]), av[2]);
+		printf("%.7o\n", 56);
+		printf("%c %s\n", (char)av[1], av[2]);
+		ft_printf("%c %s\n", av[1], av[2]);
 	}
 	return (0);
 }
