@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_width_justify.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmofoken <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/08/21 14:34:36 by gmofoken          #+#    #+#             */
-/*   Updated: 2016/08/26 11:52:00 by gmofoken         ###   ########.fr       */
+/*   Created: 2016/08/26 11:27:30 by gmofoken          #+#    #+#             */
+/*   Updated: 2016/08/26 12:09:22 by gmofoken         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdarg.h>
-# include <stdio.h>
-# include "../libft/includes/libft.h"
+void	ft_width_justify(char *s, va_list args)
+{
+	int		len;
+	int		i;
+	int		j;
+	char	*arg;
 
-void		ft_printf(char *first, ...);
-void		ft_width_justify(char *s, va_list args);
-#endif
+	i = 0;
+	j = 0;
+	arg = va_arg(args, char*);
+	len = (ft_atoi(&s[i++]) * -1) - ft_strlen(arg);
+	ft_putstr(arg);
+	while (j < len)
+	{
+		ft_putchar(' ');
+		j++;
+	}
+}

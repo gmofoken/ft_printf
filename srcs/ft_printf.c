@@ -6,18 +6,38 @@
 /*   By: gmofoken <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/21 16:06:48 by gmofoken          #+#    #+#             */
-/*   Updated: 2016/08/24 14:41:19 by gmofoken         ###   ########.fr       */
+/*   Updated: 2016/08/26 12:11:54 by gmofoken         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_oracle(char c, va_list args)
+static void	ft_precise(char *s, va_list args)
+{
+	int			i;
+	int			len;
+	char		*arg;
+
+	i = 0;
+	len = ft_atoi(&s[i]);
+	arg = va_arg(args, char*);
+	while (i < len)
+	{
+		ft_putchar(arg[i]);
+		i++;
+	}
+}
+
+void		ft_oracle(char c, va_list args)
 {
 	if (c == 's')
 		ft_putstr(va_arg(args, char*));
+	else if (c == 'S')
+		ft_putstr(va_arg(args, char*));
 	else if (c == 'c')
 		ft_putchar((char)va_arg(args, int));
+	else if (c == 'C')
+		ft_putchar(ft_toupper((char)va_arg(args, int)));
 	else if (c == 'd' || c == 'i')
 		ft_putnbr(va_arg(args, int));
 	else if (c == 'o')
@@ -37,6 +57,26 @@ void	ft_oracle(char c, va_list args)
 	}	
 }
 
+void		ft_inspect(char *s, va_list args) 
+{
+	char		c;
+	int			i;
+	int			d;
+
+	i = 0;
+	c = s[i];
+	d = ft_atoi(&s[i]);
+	if (c == '.')
+		ft_precise(&s[i++], args);
+	else if (c == '-')
+	{
+		ft_width_justify(&s[i], args);
+	}
+	else
+		ft_oracle(s[i], args);
+}
+
+
 void	ft_printf(char *first, ...)
 {
 	int			i;
@@ -47,8 +87,8 @@ void	ft_printf(char *first, ...)
 	while (first[i] != '\0')
 	{
 		if (first[i++] == '%')
-			ft_oracle(first[i++], args);
-		if (first[i] != '\0' && first[i] != '%')
+			ft_inspect(&first[i++], args);
+		else if (first[i] != '\0' && first[i] != '%')
 			ft_putchar(first[i++]);
 	}
 	va_end(args);
@@ -60,9 +100,8 @@ int		main(int ac, char **av)
 		ft_putendl("");
 	else
 	{
-		printf("%.7o\n", 56);
-		printf("%c %s\n", (char)av[1], av[2]);
-		ft_printf("%c %s\n", av[1], av[2]);
+		printf("%-8sABC\n", av[1]);
+		ft_printf("%-8sABC", av[1]);
 	}
 	return (0);
 }
