@@ -6,7 +6,7 @@
 /*   By: gmofoken <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/21 14:34:36 by gmofoken          #+#    #+#             */
-/*   Updated: 2016/08/26 11:52:00 by gmofoken         ###   ########.fr       */
+/*   Updated: 2016/08/26 16:06:07 by gmofoken         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,7 @@
 # include "../libft/includes/libft.h"
 
 void		ft_printf(char *first, ...);
-void		ft_width_justify(char *s, va_list args);
+int			ft_width_justify(char *s, va_list args);
+void		ft_oracle(char c, va_list args);
+
 #endif

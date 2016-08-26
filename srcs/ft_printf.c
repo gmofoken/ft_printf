@@ -6,26 +6,27 @@
 /*   By: gmofoken <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/21 16:06:48 by gmofoken          #+#    #+#             */
-/*   Updated: 2016/08/26 12:11:54 by gmofoken         ###   ########.fr       */
+/*   Updated: 2016/08/26 16:27:02 by gmofoken         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	ft_precise(char *s, va_list args)
+static int	ft_precise(char *s, va_list args)
 {
-	int			i;
-	int			len;
+	size_t			i;
+	size_t			len;
 	char		*arg;
 
 	i = 0;
 	len = ft_atoi(&s[i]);
 	arg = va_arg(args, char*);
-	while (i < len)
+	while (i < len && i < ft_strlen(arg))
 	{
 		ft_putchar(arg[i]);
 		i++;
 	}
+	return (3);
 }
 
 void		ft_oracle(char c, va_list args)
@@ -57,23 +58,24 @@ void		ft_oracle(char c, va_list args)
 	}	
 }
 
-void		ft_inspect(char *s, va_list args) 
+int		ft_inspect(char *s, va_list args) 
 {
 	char		c;
 	int			i;
-	int			d;
+	int			ret;
 
 	i = 0;
 	c = s[i];
-	d = ft_atoi(&s[i]);
+	ret = 0;
 	if (c == '.')
-		ft_precise(&s[i++], args);
-	else if (c == '-')
+		ret = ft_precise(&s[i++], args);
+	else if (c == '-' || (c >= 48 && c <= 57 ))
 	{
-		ft_width_justify(&s[i], args);
+		ret = ft_width_justify(&s[i], args);
 	}
 	else
 		ft_oracle(s[i], args);
+	return (ret);
 }
 
 
@@ -86,10 +88,14 @@ void	ft_printf(char *first, ...)
 	va_start(args, first);
 	while (first[i] != '\0')
 	{
-		if (first[i++] == '%')
-			ft_inspect(&first[i++], args);
+		if (first[i] == '%')
+		{
+			i++;
+			i += ft_inspect(&first[i], args);
+		}
 		else if (first[i] != '\0' && first[i] != '%')
-			ft_putchar(first[i++]);
+			ft_putchar(first[i]);
+		i++;
 	}
 	va_end(args);
 }
@@ -100,8 +106,8 @@ int		main(int ac, char **av)
 		ft_putendl("");
 	else
 	{
-		printf("%-8sABC\n", av[1]);
-		ft_printf("%-8sABC", av[1]);
+		printf("%.12s\n", av[1]);
+		ft_printf("%.12s", av[1]);
 	}
 	return (0);
 }
