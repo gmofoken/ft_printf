@@ -6,7 +6,7 @@
 /*   By: gmofoken <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/21 16:06:48 by gmofoken          #+#    #+#             */
-/*   Updated: 2016/08/26 16:27:02 by gmofoken         ###   ########.fr       */
+/*   Updated: 2016/08/26 16:33:03 by gmofoken         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ int		ft_inspect(char *s, va_list args)
 	ret = 0;
 	if (c == '.')
 		ret = ft_precise(&s[i++], args);
+	else if (c == '+')
+		ret = ft_plus_flag(&s[i], args);
 	else if (c == '-' || (c >= 48 && c <= 57 ))
 	{
 		ret = ft_width_justify(&s[i], args);
