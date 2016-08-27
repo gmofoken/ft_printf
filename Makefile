@@ -12,7 +12,7 @@
 
 NAME = ft_printf
 
-SRCS = srcs/ft_printf.c srcs/ft_width_justify.c
+SRCS = srcs/ft_printf.c srcs/ft_width_justify.c srcs/ft_plus_flag.c
 
 HEADER = -I include
 

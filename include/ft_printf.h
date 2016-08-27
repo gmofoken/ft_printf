@@ -20,5 +20,7 @@
 void		ft_printf(char *first, ...);
 int			ft_width_justify(char *s, va_list args);
 void		ft_oracle(char c, va_list args);
+int		ft_plus_flag(char *s, va_list args);
+int		ft_flag_zero(char *s, va_list args);
 
 #endif

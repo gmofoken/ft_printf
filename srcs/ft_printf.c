@@ -69,12 +69,12 @@ int		ft_inspect(char *s, va_list args)
 	ret = 0;
 	if (c == '.')
 		ret = ft_precise(&s[i++], args);
-	else if (c == '+')
+	else if ((c == '+'|| c == ' ') && (s[i + 1] == 69 || s[i + 1] == 64))
 		ret = ft_plus_flag(&s[i], args);
 	else if (c == '-' || (c >= 48 && c <= 57 ))
-	{
 		ret = ft_width_justify(&s[i], args);
-	}
+	else if (c == 48 /*&& (s[i + 1] == 69 || s[i + 1] == 64)*/)
+		ret = ft_flag_zero(&s[i], args);
 	else
 		ft_oracle(s[i], args);
 	return (ret);
@@ -108,8 +108,9 @@ int		main(int ac, char **av)
 		ft_putendl("");
 	else
 	{
-		printf("%.12s\n", av[1]);
-		ft_printf("%.12s", av[1]);
+		printf("%0i\n", ft_atoi(av[1]));
+		ft_printf("%.5s\n", ft_atoi(av[1]));
+		ft_putchar('\n');
 	}
 	return (0);
 }
