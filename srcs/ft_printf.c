@@ -6,7 +6,7 @@
 /*   By: gmofoken <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/21 16:06:48 by gmofoken          #+#    #+#             */
-/*   Updated: 2016/08/26 16:33:03 by gmofoken         ###   ########.fr       */
+/*   Updated: 2016/08/27 14:40:39 by gmofoken         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,20 +60,18 @@ void		ft_oracle(char c, va_list args)
 
 int		ft_inspect(char *s, va_list args) 
 {
-	char		c;
 	int			i;
 	int			ret;
 
 	i = 0;
-	c = s[i];
 	ret = 0;
-	if (c == '.')
+	if (s[i] == '.')
 		ret = ft_precise(&s[i++], args);
-	else if ((c == '+'|| c == ' ') && (s[i + 1] == 69 || s[i + 1] == 64))
+	else if (s[i] == '+' || s[i] == ' ')
 		ret = ft_plus_flag(&s[i], args);
-	else if (c == '-' || (c >= 48 && c <= 57 ))
+	else if (s[i] == '-')
 		ret = ft_width_justify(&s[i], args);
-	else if (c == 48 /*&& (s[i + 1] == 69 || s[i + 1] == 64)*/)
+	else if (s[i] == '0')
 		ret = ft_flag_zero(&s[i], args);
 	else
 		ft_oracle(s[i], args);
@@ -108,8 +106,8 @@ int		main(int ac, char **av)
 		ft_putendl("");
 	else
 	{
-		printf("%0i\n", ft_atoi(av[1]));
-		ft_printf("%.5s\n", ft_atoi(av[1]));
+		printf("%5o\n", ft_atoi(av[1]));
+		ft_printf("%o\n", ft_atoi(av[1]));
 		ft_putchar('\n');
 	}
 	return (0);
