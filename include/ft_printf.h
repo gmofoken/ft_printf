@@ -6,7 +6,7 @@
 /*   By: gmofoken <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/21 14:34:36 by gmofoken          #+#    #+#             */
-/*   Updated: 2016/08/26 16:06:07 by gmofoken         ###   ########.fr       */
+/*   Updated: 2016/09/03 14:54:57 by gmofoken         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@
 void		ft_printf(char *first, ...);
 int			ft_width_justify(char *s, va_list args);
 void		ft_oracle(char c, va_list args);
-int		ft_plus_flag(char *s, va_list args);
-int		ft_flag_zero(char *s, va_list args);
+int			ft_plus_flag(char *s, va_list args);
+int			ft_flag_zero(char *s, va_list args);
+int			ft_pound(char *s, va_list args);
 
 #endif
