@@ -6,7 +6,7 @@
 /*   By: gmofoken <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/21 16:06:48 by gmofoken          #+#    #+#             */
-/*   Updated: 2016/09/03 15:40:32 by gmofoken         ###   ########.fr       */
+/*   Updated: 2016/09/04 13:39:48 by gmofoken         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,8 +108,8 @@ int		main(int ac, char **av)
 		ft_putendl("");
 	else
 	{
-		printf("%#5o\n", ft_atoi(av[1]));
-		ft_printf("%#05X\n", ft_atoi(av[1]));
+		printf("%#10x\n", ft_atoi(av[1]));
+		ft_printf("%#10x\n", ft_atoi(av[1]));
 		ft_putchar('\n');
 	}
 	return (0);
