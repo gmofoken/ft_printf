@@ -6,7 +6,7 @@
 /*   By: gmofoken <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/21 16:06:48 by gmofoken          #+#    #+#             */
-/*   Updated: 2016/10/25 13:37:31 by gmofoken         ###   ########.fr       */
+/*   Updated: 2016/10/25 17:04:59 by gmofoken         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	ft_precise(char *s, va_list args)
 {
 	size_t			i;
 	size_t			len;
-	char		*arg;
+	char			*arg;
 
 	i = 0;
 	len = ft_atoi(&s[i]);
@@ -55,10 +55,10 @@ void		ft_oracle(char c, va_list args)
 	{
 		ft_putstr("0x7fff");
 		ft_putstr(ft_strmap_i(ft_itoa_base(va_arg(args, int), 16), ft_tolower));
-	}	
+	}
 }
 
-int		ft_inspect(char *s, va_list args) 
+int			ft_inspect(char *s, va_list args)
 {
 	int			i;
 	int			ret;
@@ -82,8 +82,7 @@ int		ft_inspect(char *s, va_list args)
 	return (ret);
 }
 
-
-void	ft_printf(char *first, ...)
+void		ft_printf(char *first, ...)
 {
 	int			i;
 	va_list		args;
@@ -104,7 +103,7 @@ void	ft_printf(char *first, ...)
 	va_end(args);
 }
 
-int		main(int ac, char **av)
+int			main(int ac, char **av)
 {
 	if (ac < 2)
 		ft_putendl("");

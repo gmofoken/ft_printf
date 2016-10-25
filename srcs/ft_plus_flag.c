@@ -6,13 +6,13 @@
 /*   By: gmofoken <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/26 16:33:38 by gmofoken          #+#    #+#             */
-/*   Updated: 2016/08/27 11:56:28 by gmofoken         ###   ########.fr       */
+/*   Updated: 2016/10/25 17:47:11 by gmofoken         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_plus_flag(char *s, va_list args)
+int				ft_plus_flag(char *s, va_list args)
 {
 	int	arg;
 
@@ -30,7 +30,7 @@ int		ft_plus_flag(char *s, va_list args)
 	return (2);
 }
 
-int		ft_places(int value)
+int				ft_places(int value)
 {
 	int		num;
 
@@ -58,7 +58,7 @@ int		ft_places(int value)
 	return (0);
 }
 
-static void	ft_zero_f(int arg, int j, int i)
+static void		ft_zero_f(int arg, int j, int i)
 {
 	if (arg < 0)
 	{
@@ -76,7 +76,7 @@ static void	ft_zero_f(int arg, int j, int i)
 		ft_putnbr(arg);
 }
 
-int		ft_flag_zero(char *s, va_list args)
+int				ft_flag_zero(char *s, va_list args)
 {
 	int		arg;
 	int		i;

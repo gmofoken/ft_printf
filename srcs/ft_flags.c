@@ -6,7 +6,7 @@
 /*   By: gmofoken <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/24 14:42:06 by gmofoken          #+#    #+#             */
-/*   Updated: 2016/10/25 14:13:30 by gmofoken         ###   ########.fr       */
+/*   Updated: 2016/10/25 17:43:53 by gmofoken         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,10 @@ void	l_flags_two(int num, char *s)
 		ft_putstr(ft_itoa_base(num, 8));
 }
 
-int		l_flags(char *s, va_list args)
+int		l_flags(char *s, long long val)
 {
-	long long	val;
 	long long	num;
 
-	val = va_arg(args, long long);
 	if (*s == 'l')
 	{
 		if (val < -9223372036854775807)
@@ -51,25 +49,27 @@ int		l_flags(char *s, va_list args)
 		else
 			num = val;
 		l_flags_two(num, s);
-		return	(1);
+		return (1);
 	}
 }
 
-
-
 int		ft_flags(char *s, va_list args)
 {
-	int		ret;
+	int			ret;
+	long long	val;
 
 	ret = 0;
 	if (*s == 'h')
 		ret = ft_h_flags(&s[1], args);
 	else if (*s == 'l')
-		ret = l_flags(&s[1], args);
+	{
+		val = va_arg(args, long long);
+		ret = l_flags(&s[1], val);
+	}
 	else if (*s == 'z')
 	{
-	
+		ft_putnbr(va_arg(args, int));
+		return (1);
 	}
-
 	return (ret);
 }

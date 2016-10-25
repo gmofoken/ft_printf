@@ -6,7 +6,7 @@
 /*   By: gmofoken <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/25 09:19:43 by gmofoken          #+#    #+#             */
-/*   Updated: 2016/10/25 14:14:39 by gmofoken         ###   ########.fr       */
+/*   Updated: 2016/10/25 17:37:16 by gmofoken         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	h_flag(int val, char *s)
 
 	if (val < -32767)
 		num = -32767;
-	else if(val > 32767)
+	else if (val > 32767)
 		num = 32767;
 	else
 		num = val;
