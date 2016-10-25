@@ -6,7 +6,7 @@
 /*   By: gmofoken <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/21 16:06:48 by gmofoken          #+#    #+#             */
-/*   Updated: 2016/09/04 13:39:48 by gmofoken         ###   ########.fr       */
+/*   Updated: 2016/10/25 13:37:31 by gmofoken         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ int		ft_inspect(char *s, va_list args)
 		ret = ft_flag_zero(&s[i], args);
 	else if (s[i] == '#')
 		ret = ft_pound(&s[i + 1], args);
+	else if (s[i] == 'l' || s[i] == 'h' || s[i] == 'j' || s[i] == 'z')
+		ret = ft_flags(&s[i], args);
 	else
 		ft_oracle(s[i], args);
 	return (ret);
@@ -108,8 +110,9 @@ int		main(int ac, char **av)
 		ft_putendl("");
 	else
 	{
-		printf("%#10x\n", ft_atoi(av[1]));
-		ft_printf("%#10x\n", ft_atoi(av[1]));
+		printf("%zd\n", (long long)ft_atoi(av[1]));
+		printf("%zd\n", (long)ft_atoi(av[1]));
+		ft_printf("%lld\n", ft_atoi(av[1]));
 		ft_putchar('\n');
 	}
 	return (0);

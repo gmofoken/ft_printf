@@ -6,7 +6,7 @@
 /*   By: gmofoken <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/21 14:34:36 by gmofoken          #+#    #+#             */
-/*   Updated: 2016/09/04 11:03:22 by gmofoken         ###   ########.fr       */
+/*   Updated: 2016/10/25 09:54:44 by gmofoken         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,7 @@ int			ft_plus_flag(char *s, va_list args);
 int			ft_flag_zero(char *s, va_list args);
 int			ft_pound(char *s, va_list args);
 int			ft_places(int value);
+int			ft_flags(char *s, va_list args);
+int			ft_h_flags(char *s, va_list args);
 
 #endif
